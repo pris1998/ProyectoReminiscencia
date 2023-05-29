@@ -35,9 +35,7 @@ public class RegisterActivity extends AppCompatActivity {
     ImageView imageViewRegister;
     TextView txtVEmailR, txtnewUser;
 
-    TextInputEditText txtEEmail, txtEPassword, confirmarPassword;
-
-    TextInputEditText txtName;
+    TextInputEditText txtEEmail, txtEPassword, confirmarPassword, txtName;
 
     Button btnInicioS;
 
@@ -64,6 +62,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         btnInicioS = findViewById(R.id.btnInicioS);
         txtnewUser = findViewById(R.id.txtnewUser);
+
 
         txtnewUser.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -181,10 +180,24 @@ public class RegisterActivity extends AppCompatActivity {
         //Uso un HashMap porque es más facil ya que tiene un clave por (String)
         // y un valor (Object) son los objetos que se guardan al ecribirlo mediante la pantalla de Registro
         Map<String,Object> mapDatos = new HashMap<>();
-        mapDatos.put("name",name);
         mapDatos.put("email",email);
         mapDatos.put("password",password);
-        firebaseFirestore.collection("users").add(mapDatos).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+        /*firebaseFirestore.collection("doctores").add(mapDatos).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+            @Override
+            public void onSuccess(DocumentReference documentReference) {
+                //Salga bien
+                myToast("Usuario creado en BD");
+                //finaliza la activity
+                finish();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                myToast("Error al registrar usuario");
+            }
+        });*/
+        firebaseFirestore.collection("users").document("HMpzzDqpNiDMLS60kkdY").
+                collection("doctores").add(mapDatos).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
             @Override
             public void onSuccess(DocumentReference documentReference) {
                 //Salga bien
@@ -198,6 +211,7 @@ public class RegisterActivity extends AppCompatActivity {
                 myToast("Error al registrar usuario");
             }
         });
+
     }
 
 
