@@ -6,15 +6,15 @@
     android:layout_margin="20dp">
 
     <TextView
-        android:id="@+id/namePaciente"
+        android:id="@+id/nameMedicina"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Nombre paciente"
+        android:text="Nombre medicacion"
         android:textStyle="bold"
         android:textSize="17dp"/>
 
     <TextView
-        android:id="@+id/txtNamePaciente"
+        android:id="@+id/txtName_medicamento"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text=""
@@ -22,16 +22,16 @@
         android:textSize="17dp"/>
 
     <TextView
-        android:id="@+id/surnamePaciente"
+        android:id="@+id/dosisMedicina"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textStyle="bold"
-        android:text="Apellidos"
+        android:text="Dosis"
         android:layout_marginTop="20dp"
         android:textSize="17dp"/>
 
     <TextView
-        android:id="@+id/txtApellidoPaciente"
+        android:id="@+id/txtdosis"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text=""
@@ -39,18 +39,17 @@
         android:textSize="17dp"/>
 
 
-
     <TextView
-        android:id="@+id/fecha_nacimiento"
+        android:id="@+id/frecuenciaMedicina"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Fecha de nacimiento"
+        android:text="Frecuencia"
         android:layout_marginTop="30dp"
         android:textStyle="bold"
         android:textSize="17dp"/>
 
     <TextView
-        android:id="@+id/txtfecha_nacimientoPaciente"
+        android:id="@+id/txtfrecuencia"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text=""
@@ -58,16 +57,16 @@
         android:textSize="17dp"/>
 
     <TextView
-        android:id="@+id/genero"
+        android:id="@+id/distribucion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Género"
+        android:text="Vía distribución"
         android:textStyle="bold"
         android:layout_marginTop="20dp"
         android:textSize="17dp"/>
 
     <TextView
-        android:id="@+id/txtgenero"
+        android:id="@+id/txtvia_administracion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text=""
@@ -75,16 +74,16 @@
         android:textSize="17dp"/>
 
     <TextView
-        android:id="@+id/direccion"
+        android:id="@+id/duracion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Dirección"
+        android:text="Duración"
         android:textStyle="bold"
         android:layout_marginTop="20dp"
         android:textSize="17dp"/>
 
     <TextView
-        android:id="@+id/txtdireccionPaciente"
+        android:id="@+id/txtduracion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text=""
@@ -92,19 +91,19 @@
         android:textSize="17dp"/>
 
     <TextView
-        android:id="@+id/telContacto"
+        android:id="@+id/intrucciones"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Teléfono de contacto"
+        android:text="Instrucciones"
         android:textStyle="bold"
         android:layout_marginTop="20dp"
         android:textSize="17dp"/>
 
     <TextView
-        android:id="@+id/txttelfContactoPaciente"
+        android:id="@+id/txtintrucciones"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text=""
+        android:text="uuuu"
         android:layout_marginTop="20dp"
         android:textSize="17dp"/>
 

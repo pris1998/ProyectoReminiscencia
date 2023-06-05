@@ -1,7 +1,5 @@
 package com.example.proyectofct2.utils.adapter;
 
-import static com.example.proyectofct2.R.id.editTextSurname;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,13 +41,13 @@ public class PerfilAdapter extends FirestoreRecyclerAdapter<Paciente, PerfilAdap
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_paciente_perfil,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.myadapter_paciente,parent,false);
         return new ViewHolder(view);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView name;
-        EditText surname;
+        TextView surname;
         TextView fecha_nacimiento;
         TextView genero;
         TextView direccion;
@@ -58,12 +56,12 @@ public class PerfilAdapter extends FirestoreRecyclerAdapter<Paciente, PerfilAdap
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            name = itemView.findViewById(R.id.editTextName);
-            surname = itemView.findViewById(R.id.editTextSurname);
-            //fecha_nacimiento = itemView.findViewById(R.id.fecha_nacimiento);
-            //genero = itemView.findViewById(R.id.genero);
-           // direccion = itemView.findViewById(R.id.direction);
-            //telContacto = itemView.findViewById(R.id.telContacto);
+            name = itemView.findViewById(R.id.txtNamePaciente);
+            surname = itemView.findViewById(R.id.txtApellidoPaciente);
+            fecha_nacimiento = itemView.findViewById(R.id.txtfecha_nacimientoPaciente);
+            genero = itemView.findViewById(R.id.txtgenero);
+            direccion = itemView.findViewById(R.id.txtdireccionPaciente);
+            telContacto = itemView.findViewById(R.id.txttelfContactoPaciente);
 
         }
     }

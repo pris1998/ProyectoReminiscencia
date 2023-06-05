@@ -13,6 +13,9 @@ import com.example.proyectofct2.R;
 import com.example.proyectofct2.informacion_doctores.PacientePerfilActivity;
 import com.example.proyectofct2.utils.adapter.RecyclerAdapter;
 import com.example.proyectofct2.utils.modelo.Paciente;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 
 import java.util.ArrayList;
@@ -91,6 +94,49 @@ public class ListaPacientesActivity extends AppCompatActivity {
 
 
     }
+/*
+    public void eliminarUsuario(String uid, ArrayList<ListedAnimeMedia> listedAnimeMedia, FirestoreQueryCallback callback) {
+        usersRef.whereEqualTo("uid", uid).get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot documents) {
+                        for (DocumentSnapshot document : documents) {
+                            User userData = document.toObject(User.class);
+                            for (ListedAnimeMedia animeMedia : listedAnimeMedia) {
+                                ListedAnimeMedia existingAnime = null;
+                                for (ListedAnimeMedia anime : userData.getAnimeList()) {
+                                    if (anime.getId().equals(animeMedia.getId())) {
+                                        existingAnime = anime;
+                                        break;
+                                    }
+                                }
+                                if (existingAnime != null) {
+                                    document.getReference().update("animeList", FieldValue.arrayRemove(animeMedia))
+                                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task) {
+                                                    callback.onQueryComplete(task.isSuccessful());
+                                                }
+                                            })
+                                            .addOnFailureListener(new OnFailureListener() {
+                                                @Override
+                                                public void onFailure(@NonNull Exception exception) {
+                                                    callback.onQueryFailure(exception);
+                                                }
+                                            });
+                                }
+                            }
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception exception) {
+                        Log.e("REMOVEANIME ERROR", "No se pudo encontrar ningún documento del usuario " + uid);
+                    }
+                });
+    }*/
+
 
 
 

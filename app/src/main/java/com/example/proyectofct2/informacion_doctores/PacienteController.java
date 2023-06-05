@@ -11,14 +11,12 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.ArrayList;
-
 public class PacienteController {
     FirebaseFirestore db =FirebaseFirestore.getInstance();
 
     CollectionReference usuarios = db.collection("users");
 
-    public void addPaciente(ArrayList<Paciente> paciente){
+    public void addPaciente(Paciente paciente){
         usuarios.add(paciente).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
             @Override
             public void onSuccess(DocumentReference documentReference) {

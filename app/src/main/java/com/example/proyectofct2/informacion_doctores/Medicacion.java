@@ -9,6 +9,9 @@ public class Medicacion {
     private String duracion;//tomar con comida, evitar el consumo de alcohol,
     private String intrucciones;
 
+    public Medicacion(){
+
+    }
     public Medicacion(String id_medicina, String name_medicamento, String dosis, String frecuencia, String via_administracion, String duracion, String intrucciones) {
         this.id_medicina = id_medicina;
         this.name_medicamento = name_medicamento;

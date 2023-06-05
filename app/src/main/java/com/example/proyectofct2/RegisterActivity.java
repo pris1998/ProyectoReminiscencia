@@ -196,8 +196,13 @@ public class RegisterActivity extends AppCompatActivity {
                 myToast("Error al registrar usuario");
             }
         });*/
-        firebaseFirestore.collection("users").document("HMpzzDqpNiDMLS60kkdY").
-                collection("doctores").add(mapDatos).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+
+
+        /**
+         * ******COMPROBAR ESTO QUE LLEGA UN NUEVO USUARIO *****
+         */
+
+        firebaseFirestore.collection("users").add(mapDatos).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
             @Override
             public void onSuccess(DocumentReference documentReference) {
                 //Salga bien

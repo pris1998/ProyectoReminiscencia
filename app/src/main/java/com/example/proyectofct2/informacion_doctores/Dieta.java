@@ -3,22 +3,26 @@ package com.example.proyectofct2.informacion_doctores;
 import java.util.ArrayList;
 
 public class Dieta {
-    private String id;
+    private String idDieta;
     private String tipo;
     private ArrayList<Alimentos> alimento;
     private String estatura;
     private String peso;
 
+    public Dieta(){
+
+    }
+
     public Dieta(String id, String tipo, ArrayList<Alimentos> alimento, String estatura, String peso) {
-        this.id = id;
+        this.idDieta = id;
         this.tipo = tipo;
         this.alimento = alimento;
         this.estatura = estatura;
         this.peso = peso;
     }
 
-    public String getId() {
-        return id;
+    public String getIdDieta() {
+        return idDieta;
     }
 
 

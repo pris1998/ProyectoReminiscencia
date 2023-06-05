@@ -3,18 +3,23 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="20dp">
+    android:id="@+id/recyclerDieta"
+    android:layout_margin="20dp"
+    >
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
     <TextView
-        android:id="@+id/namePaciente"
+        android:id="@+id/tipoDieta"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Nombre paciente"
-        android:textStyle="bold"
+        android:text="Tipo"
         android:textSize="17dp"/>
 
     <TextView
-        android:id="@+id/txtNamePaciente"
+        android:id="@+id/txtTipoDieta"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text=""
@@ -22,16 +27,15 @@
         android:textSize="17dp"/>
 
     <TextView
-        android:id="@+id/surnamePaciente"
+        android:id="@+id/alimentosDieta"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:text="Apellidos"
+        android:text="Alimentos"
         android:layout_marginTop="20dp"
         android:textSize="17dp"/>
 
     <TextView
-        android:id="@+id/txtApellidoPaciente"
+        android:id="@+id/txtAlimentosDieta"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text=""
@@ -39,18 +43,16 @@
         android:textSize="17dp"/>
 
 
-
     <TextView
-        android:id="@+id/fecha_nacimiento"
+        android:id="@+id/estaturaDieta"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Fecha de nacimiento"
+        android:text="Estatura"
         android:layout_marginTop="30dp"
-        android:textStyle="bold"
         android:textSize="17dp"/>
 
     <TextView
-        android:id="@+id/txtfecha_nacimientoPaciente"
+        android:id="@+id/txtEstaturaDieta"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text=""
@@ -58,56 +60,36 @@
         android:textSize="17dp"/>
 
     <TextView
-        android:id="@+id/genero"
+        android:id="@+id/pesoDieta"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Género"
-        android:textStyle="bold"
+        android:text="Peso"
         android:layout_marginTop="20dp"
         android:textSize="17dp"/>
 
     <TextView
-        android:id="@+id/txtgenero"
+        android:id="@+id/txtPesoDieta"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text=""
         android:layout_marginTop="20dp"
         android:textSize="17dp"/>
 
-    <TextView
-        android:id="@+id/direccion"
+    <View
         android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#222222"
+        android:layout_marginTop="30dp"
+        />
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Dirección"
-        android:textStyle="bold"
-        android:layout_marginTop="20dp"
-        android:textSize="17dp"/>
-
-    <TextView
-        android:id="@+id/txtdireccionPaciente"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:layout_marginTop="20dp"
-        android:textSize="17dp"/>
-
-    <TextView
-        android:id="@+id/telContacto"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Teléfono de contacto"
-        android:textStyle="bold"
-        android:layout_marginTop="20dp"
-        android:textSize="17dp"/>
-
-    <TextView
-        android:id="@+id/txttelfContactoPaciente"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:layout_marginTop="20dp"
-        android:textSize="17dp"/>
-
-
+        android:text="Editar"
+        android:id="@+id/btnEditar"
+        android:layout_marginLeft="150dp"
+        android:textAlignment="center" />
 
 </LinearLayout>

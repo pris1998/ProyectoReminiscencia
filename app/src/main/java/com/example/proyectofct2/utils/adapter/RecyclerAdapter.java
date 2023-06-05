@@ -19,7 +19,7 @@ import java.util.List;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.RecyclerHolder> {
     Context context;
-    List<Paciente> listaPacientes;
+    public List<Paciente> listaPacientes;
 
 
     public void setFilterPaciente(List<Paciente> filterPacientes){
