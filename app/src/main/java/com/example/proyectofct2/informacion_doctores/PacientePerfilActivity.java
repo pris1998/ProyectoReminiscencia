@@ -43,7 +43,7 @@ public class PacientePerfilActivity extends AppCompatActivity {
 
         pacienteController = new PacienteController();
         //le paso la nueva dieta
-        pacienteController.addPaciente(paciente.getLis);
+       // pacienteController.addPaciente(paciente.getLis);
 
 
 
@@ -52,12 +52,14 @@ public class PacientePerfilActivity extends AppCompatActivity {
 //este metodo lo llamo directamente desde la lista (ListaPacientesActivity)
     public List<Paciente> getListPacientes(){
         ArrayList<Paciente> lista = new ArrayList<>();
-        lista.add(new Paciente("1","José Manuel", "Hernández Prieto","80", "hombre", "Calle San Miguel,4", "12345678"));
-        lista.add(new Paciente("2","María", "Dueñas Prieto","75", "mujer", "Plaza Jeus,3", "3456789"));
-        lista.add(new Paciente("3","Epifanía", "García García","89", "mujer", "", ""));
-        pacienteController = new PacienteController();
-        //le paso la nueva dieta
-        pacienteController.addPaciente(lista);
+
+            lista.add(new Paciente("1","José Manuel", "Hernández Prieto","80", "hombre", "Calle San Miguel,4", "12345678"));
+            lista.add(new Paciente("2","María", "Dueñas Prieto","75", "mujer", "Plaza Jeus,3", "3456789"));
+            lista.add(new Paciente("3","Epifanía", "García García","89", "mujer", "", ""));
+            pacienteController = new PacienteController();
+            //le paso la nueva dieta
+            pacienteController.addPaciente(lista);
+
         return lista;
     }
 }

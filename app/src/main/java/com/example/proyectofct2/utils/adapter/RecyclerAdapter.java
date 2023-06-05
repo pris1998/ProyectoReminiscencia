@@ -21,10 +21,18 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
     Context context;
     List<Paciente> listaPacientes;
 
+
+    public void setFilterPaciente(List<Paciente> filterPacientes){
+        this.listaPacientes = filterPacientes;
+        notifyDataSetChanged();
+    }
+
     public RecyclerAdapter(Context context, List<Paciente> listaPacientes) {
         this.context = context;
         this.listaPacientes = listaPacientes;
     }
+
+
 
     @NonNull
     @Override

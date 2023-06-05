@@ -47,12 +47,14 @@ public class InformationPatient extends AppCompatActivity {
                     {
                         Intent intent = new Intent(InformationPatient.this, LoginActivity.class);
                         startActivity(intent);
+                        finish();
                         break;
                     }
                     case R.id.logout:
                     {
                         Intent intent = new Intent(InformationPatient.this, LoginActivity.class);
                         startActivity(intent);
+                        finish();
                         break;
                     }
                     case R.id.dieta:
@@ -63,8 +65,7 @@ public class InformationPatient extends AppCompatActivity {
                     }
                     case R.id.perfil:
                     {
-                        Intent intent = new Intent(InformationPatient.this, PacientePerfilActivity.class);
-                        startActivity(intent);
+                        Toast.makeText(InformationPatient.this,"Has seleccionado Perfil",Toast.LENGTH_LONG).show();
                         break;
                     }
                     case R.id.vaccine:

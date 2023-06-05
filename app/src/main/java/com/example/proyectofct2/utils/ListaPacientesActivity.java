@@ -1,17 +1,13 @@
 package com.example.proyectofct2.utils;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.LoaderManager;
-import android.content.Context;
-import android.content.Loader;
-import android.database.Cursor;
+
 import android.os.Bundle;
-import android.widget.LinearLayout;
-import android.widget.SearchView;
-import android.widget.SimpleCursorAdapter;
+import android.widget.Toast;
 
 import com.example.proyectofct2.R;
 import com.example.proyectofct2.informacion_doctores.PacientePerfilActivity;
@@ -24,8 +20,10 @@ import java.util.List;
 
 public class ListaPacientesActivity extends AppCompatActivity {
     RecyclerView recView;
-    RecyclerAdapter recAdapter;
-    PacientePerfilActivity pacientePerfilActivity;
+    private RecyclerAdapter recAdapter;
+
+    private ArrayList<Paciente> lista = new ArrayList<>();
+    private SearchView search;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +32,7 @@ public class ListaPacientesActivity extends AppCompatActivity {
 
         recView = findViewById(R.id.recyclerView);
         //pasar el contexto , a no ser que sea en la parte de mandarlo directamente al PerfilActivity
-        recAdapter = new RecyclerAdapter(this,pacientePerfilActivity.getListPacientes());
+        recAdapter = new RecyclerAdapter(this,getListPacientes());
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
 
@@ -42,22 +40,57 @@ public class ListaPacientesActivity extends AppCompatActivity {
         recView.setAdapter(recAdapter);
         recView.setLayoutManager(linearLayoutManager);
 
+        search = (SearchView) findViewById(R.id.search);
+        search.clearFocus();
+        search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filterList(newText);
+                return true;
+            }
+        });
 
     }
     //Tengo que mostrar los pacientes ya que en esta aplicacion se van a
     //registrar solo los doctores y son ellos mismos los que tienen acceso a esta lista
 
     //Este metodo está en PacientePerfilActivity
-    /*public List<Paciente> getList(){
+    public List<Paciente> getListPacientes(){
         //Array con el contenido de la lista de los Pacientes
-        ArrayList<Paciente> lista = new ArrayList<>();
+
         PacientePerfilActivity pacientePerfilActivity;
-        lista.add(new Paciente("1","José Manuel", "Hernández Prieto","80", "hombre", "Calle San Miguel,4", "12345678"));
-        lista.add(new Paciente("2","María", "Dueñas Prieto","75", "mujer", "Plaza Jeus,3", "3456789"));
-        lista.add(new Paciente("3","Epifanía", "García García","89", "mujer", "", ""));
+        lista.add(new Paciente("1","José Manuel", "Hernández Prieto","20/02/1934", "hombre", "Calle San Miguel,4", "12345678"));
+        lista.add(new Paciente("2","María", "Dueñas Prieto","20/10/1945", "mujer", "Plaza Jeus,3", "3456789"));
+        lista.add(new Paciente("3","Epifanía", "García García","12/02/1937", "mujer", "", "66666666"));
+        lista.add(new Paciente("4","Epifanía", "Ibáñez Pueblo","20/05/1930", "mujer", "", "123456789"));
+        lista.add(new Paciente("5","Baldomero", "Solana Torrico","09/06/1936", "hombre", "", ""));
 
         return lista;
-    }*/
+    }
+
+
+    private void filterList(String text){
+        List<Paciente> filterPaciente = new ArrayList<>();
+        for (Paciente paciente : lista){
+            if (paciente.getName().toLowerCase().contains(text.toLowerCase())){
+                filterPaciente.add(paciente);
+            }
+        }
+
+        if (filterPaciente.isEmpty()) {
+            Toast.makeText(this, "No se encuentra", Toast.LENGTH_SHORT).show();
+        }else{
+            recAdapter.setFilterPaciente(filterPaciente);
+        }
+
+
+
+    }
 
 
 
