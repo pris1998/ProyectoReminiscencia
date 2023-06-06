@@ -4,7 +4,6 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import com.example.proyectofct2.controlador.FirestoreControllerCallback;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
@@ -13,15 +12,29 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
+/**
 
+ Controlador para las operaciones relacionadas con la dieta en la base de datos.
+ */
 
 public class DietaController {
+    /**
 
+     Interfaz para manejar el resultado de la consulta de la dieta.
+     */
     public interface DietaCallback {
+        /**
 
+         Método llamado cuando se completa la consulta de la dieta.
+         @param result la dieta obtenida
+         */
         void onQueryComplete(Dieta result);
 
+        /**
 
+         Método llamado cuando ocurre un error durante la consulta de la dieta.
+         @param exception la excepción que ocurrió
+         */
         void onQueryFailure(Exception exception);
     }
 
@@ -29,7 +42,12 @@ public class DietaController {
     FirebaseFirestore db =FirebaseFirestore.getInstance();
 
     CollectionReference dietas = db.collection("dietas");
+    /**
 
+     Agrega una dieta a la base de datos.
+     @param dieta la dieta a agregar
+     @param calback el callback para manejar el resultado de la operación
+     */
     public void addDieta(Dieta dieta, FirestoreControllerCallback calback){
         dietas.add(dieta).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
             @Override
@@ -43,7 +61,12 @@ public class DietaController {
             }
         });
     }
+    /**
 
+     Obtiene una dieta de la base de datos por su ID.
+     @param idDieta el ID de la dieta a obtener
+     @param callback el callback para manejar el resultado de la operación
+     */
     public void getDieta(String idDieta, DietaCallback callback) {
         dietas.whereEqualTo("idDieta", idDieta).get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {

@@ -12,7 +12,9 @@ import com.example.proyectofct2.utils.modelo.Paciente;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
-
+/**
+ Actividad que muestra el perfil de un paciente.
+ */
 public class PacientePerfilActivity extends AppCompatActivity {
     PacienteController pacienteController;
 

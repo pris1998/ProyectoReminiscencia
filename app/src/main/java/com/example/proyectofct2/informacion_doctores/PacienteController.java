@@ -11,11 +11,17 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+/**
+ Controlador para gestionar la información de los pacientes.
+ */
 public class PacienteController {
     FirebaseFirestore db =FirebaseFirestore.getInstance();
 
     CollectionReference usuarios = db.collection("users");
-
+    /**
+     Agrega un nuevo paciente a la base de datos.
+     @param paciente El objeto Paciente a agregar.
+     */
     public void addPaciente(Paciente paciente){
         usuarios.add(paciente).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
             @Override

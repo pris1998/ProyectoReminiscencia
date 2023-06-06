@@ -19,6 +19,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ Actividad para editar una dieta existente.
+ */
 public class EditActivity extends AppCompatActivity {
     private String dietaId;
     private FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
@@ -48,6 +51,9 @@ public class EditActivity extends AppCompatActivity {
         });
 
     }
+    /**
+     Obtiene los datos de la dieta desde la base de datos y los muestra en los campos correspondientes.
+     */
     private void obtenerDatos(){
         firebaseFirestore.collection("dietas").document(dietaId).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
@@ -70,6 +76,9 @@ public class EditActivity extends AppCompatActivity {
             }
         });
     }
+    /**
+     Actualiza los datos de la dieta en la base de datos.
+     */
     private void actualizarDietas(){
         String tipoDieta = txtTipoDieta.getText().toString().trim();
         String estaturaDieta = txtEstaturaDieta.getText().toString().trim();
@@ -81,6 +90,11 @@ public class EditActivity extends AppCompatActivity {
         mapDieta.put("estatura",estaturaDieta);
         mapDieta.put("peso",pesoDieta);
 
-        firebaseFirestore.collection("dietas").document(dietaId).update(mapDieta);
+        firebaseFirestore.collection("dietas").document(dietaId).update(mapDieta).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void unused) {
+                Toast.makeText(EditActivity.this, "Datos actualizados", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

@@ -20,7 +20,9 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ Actividad que muestra una lista de pacientes y permite filtrarlos mediante una barra de búsqueda.
+ */
 public class ListaPacientesActivity extends AppCompatActivity {
     RecyclerView recView;
     private RecyclerAdapter recAdapter;
@@ -34,12 +36,10 @@ public class ListaPacientesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_lista_pacientes);
 
         recView = findViewById(R.id.recyclerView);
-        //pasar el contexto , a no ser que sea en la parte de mandarlo directamente al PerfilActivity
         recAdapter = new RecyclerAdapter(this,getListPacientes());
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
 
-        //añado los elementos creados
         recView.setAdapter(recAdapter);
         recView.setLayoutManager(linearLayoutManager);
 
@@ -59,12 +59,11 @@ public class ListaPacientesActivity extends AppCompatActivity {
         });
 
     }
-    //Tengo que mostrar los pacientes ya que en esta aplicacion se van a
-    //registrar solo los doctores y son ellos mismos los que tienen acceso a esta lista
-
-    //Este metodo está en PacientePerfilActivity
+    /**
+     Obtiene la lista de pacientes.
+     @return Lista de pacientes
+     */
     public List<Paciente> getListPacientes(){
-        //Array con el contenido de la lista de los Pacientes
 
         PacientePerfilActivity pacientePerfilActivity;
         lista.add(new Paciente("1","José Manuel", "Hernández Prieto","20/02/1934", "hombre", "Calle San Miguel,4", "12345678"));
@@ -76,7 +75,10 @@ public class ListaPacientesActivity extends AppCompatActivity {
         return lista;
     }
 
-
+    /**
+     Filtra la lista de pacientes según el texto de búsqueda.
+     @param text Texto de búsqueda
+     */
     private void filterList(String text){
         List<Paciente> filterPaciente = new ArrayList<>();
         for (Paciente paciente : lista){
@@ -94,50 +96,6 @@ public class ListaPacientesActivity extends AppCompatActivity {
 
 
     }
-/*
-    public void eliminarUsuario(String uid, ArrayList<ListedAnimeMedia> listedAnimeMedia, FirestoreQueryCallback callback) {
-        usersRef.whereEqualTo("uid", uid).get()
-                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                    @Override
-                    public void onSuccess(QuerySnapshot documents) {
-                        for (DocumentSnapshot document : documents) {
-                            User userData = document.toObject(User.class);
-                            for (ListedAnimeMedia animeMedia : listedAnimeMedia) {
-                                ListedAnimeMedia existingAnime = null;
-                                for (ListedAnimeMedia anime : userData.getAnimeList()) {
-                                    if (anime.getId().equals(animeMedia.getId())) {
-                                        existingAnime = anime;
-                                        break;
-                                    }
-                                }
-                                if (existingAnime != null) {
-                                    document.getReference().update("animeList", FieldValue.arrayRemove(animeMedia))
-                                            .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                                @Override
-                                                public void onComplete(@NonNull Task<Void> task) {
-                                                    callback.onQueryComplete(task.isSuccessful());
-                                                }
-                                            })
-                                            .addOnFailureListener(new OnFailureListener() {
-                                                @Override
-                                                public void onFailure(@NonNull Exception exception) {
-                                                    callback.onQueryFailure(exception);
-                                                }
-                                            });
-                                }
-                            }
-                        }
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception exception) {
-                        Log.e("REMOVEANIME ERROR", "No se pudo encontrar ningún documento del usuario " + uid);
-                    }
-                });
-    }*/
-
-
 
 
 

@@ -36,7 +36,6 @@ public class RecyclerMedicacion extends FirestoreRecyclerAdapter<Medicacion,Recy
         holder.duracion.setText(medicina.getDuracion());
         holder.intrucciones.setText(medicina.getIntrucciones());
 
-
     }
 
 

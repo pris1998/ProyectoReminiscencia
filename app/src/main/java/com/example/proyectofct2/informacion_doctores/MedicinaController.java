@@ -9,13 +9,17 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-
+/**
+ Controlador para gestionar las medicinas.
+ */
 public class MedicinaController {
     FirebaseFirestore db =FirebaseFirestore.getInstance();
 
-
     CollectionReference medicinas = db.collection("medicinas");
-
+    /**
+     Agrega una medicina a la base de datos.
+     @param medicacion La medicación a agregar.
+     */
     public void addMedicina(Medicacion medicacion){
         medicinas.add(medicacion).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
             @Override

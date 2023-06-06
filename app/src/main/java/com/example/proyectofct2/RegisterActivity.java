@@ -30,7 +30,9 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
-
+/**
+ * Actividad para el registro de usuarios.
+ */
 public class RegisterActivity extends AppCompatActivity {
     ImageView imageViewRegister;
     TextView txtVEmailR, txtnewUser;
@@ -81,12 +83,21 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
     }
-
+    /**
+     * Muestra un mensaje Toast en la actividad.
+     *
+     * @param mensaje Mensaje a mostrar
+     */
     public void myToast(String mensaje){
         Toast.makeText(this,mensaje,Toast.LENGTH_LONG).show();
     }
 
-    //Metodo a parte para crear usuarios y evitar repetir codigo
+    /**
+     * Método para crear usuarios y evitar repetir código.
+     *
+     * @param email    Dirección de correo electrónico
+     * @param password Contraseña
+     */
     private void createUsers(String email , String password){
         //Si no estan vacios los rellena y los crea
         auth.createUserWithEmailAndPassword( email,  password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
@@ -109,7 +120,13 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
-
+    /**
+     * Muestra un cuadro de diálogo de alerta.
+     *
+     * @param title   Título del cuadro de diálogo
+     * @param mensaje Mensaje del cuadro de diálogo
+     * @return Cuadro de diálogo creado
+     */
     public AlertDialog alertDialog(String title, String mensaje){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(title);
@@ -123,8 +140,10 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
-    //PARTE AÑADIDA NUEVA
-    public void validate() {
+
+    /**
+     * Valida el formulario de registro.
+     */    public void validate() {
 
         email = txtEEmail.getText().toString().trim();
         password = txtEPassword.getText().toString().trim();
@@ -153,11 +172,16 @@ public class RegisterActivity extends AppCompatActivity {
             confirmarPassword.setError("Deben ser iguales");
             return;
         } else {
-            registroBD(nombre_Usuario,email, password);
+            registroBD(email, password);
             registro(email, password);
         }
     }
-
+    /**
+     * Realiza el registro de usuario.
+     *
+     * @param email    Dirección de correo electrónico
+     * @param password Contraseña
+     */
     public void registro(String email,String password){
         Fauth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -175,8 +199,12 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
 
-    //registro con la base de datos
-    public void registroBD(String name, String email,String password){
+    /**
+     * Realiza el registro en la base de datos.
+     *
+     * @param email    Dirección de correo electrónico
+     * @param password Contraseña
+     */    public void registroBD(String email,String password){
         //Uso un HashMap porque es más facil ya que tiene un clave por (String)
         // y un valor (Object) son los objetos que se guardan al ecribirlo mediante la pantalla de Registro
         Map<String,Object> mapDatos = new HashMap<>();
@@ -207,7 +235,7 @@ public class RegisterActivity extends AppCompatActivity {
             public void onSuccess(DocumentReference documentReference) {
                 //Salga bien
                 myToast("Usuario creado en BD");
-                //finaliza la activity
+                // Finaliza la actividad
                 finish();
             }
         }).addOnFailureListener(new OnFailureListener() {

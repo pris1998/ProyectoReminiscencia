@@ -8,19 +8,17 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
+
 
 import com.example.proyectofct2.LoginActivity;
 import com.example.proyectofct2.R;
-import com.example.proyectofct2.informacion_doctores.Dieta;
 import com.example.proyectofct2.informacion_doctores.DietaActivity;
-import com.example.proyectofct2.informacion_doctores.MedicinaController;
 import com.example.proyectofct2.informacion_doctores.MedicinasActivity;
 import com.example.proyectofct2.informacion_doctores.PacientePerfilActivity;
 import com.google.android.material.navigation.NavigationView;
-
+/**
+ Actividad para mostrar la información del paciente y su navegación.
+ */
 public class InformationPatient extends AppCompatActivity {
     DrawerLayout drawerLayout;
     NavigationView nav;
@@ -38,7 +36,7 @@ public class InformationPatient extends AppCompatActivity {
         drawerLayout.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        //Esta parte sería con metodos a parte para cada celda del menu
+        // Configuración del menú de navegación
         nav.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {

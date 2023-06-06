@@ -3,7 +3,6 @@ package com.example.proyectofct2.utils.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,7 +12,9 @@ import com.example.proyectofct2.R;
 import com.example.proyectofct2.utils.modelo.Paciente;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
-
+/**
+ Adaptador utilizado para mostrar los perfiles de pacientes en un RecyclerView.
+ */
 public class PerfilAdapter extends FirestoreRecyclerAdapter<Paciente, PerfilAdapter.ViewHolder> {
 
     /**
@@ -44,7 +45,9 @@ public class PerfilAdapter extends FirestoreRecyclerAdapter<Paciente, PerfilAdap
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.myadapter_paciente,parent,false);
         return new ViewHolder(view);
     }
-
+    /**
+     ViewHolder utilizado para representar los elementos de la lista en el RecyclerView.
+     */
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView name;
         TextView surname;

@@ -32,12 +32,14 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.regex.Pattern;
-
+/**
+¡
+ Actividad que permite al usuario iniciar sesión en la aplicación.
+ */
 public class LoginActivity extends AppCompatActivity {
-    //Todo. Lo he creado statico para poder llamarlo en otras actividades
-    //Todo. en vez de crear todo el tiempo uno nuevo (se llama RegisterActivity)
+
     public static FirebaseAuth auth = FirebaseAuth.getInstance();
-    //TextViews
+
     private TextInputEditText txtEmailUser;
     private TextInputEditText txtPasswordUser;
     TextView txtOlvidarPassword;
@@ -45,19 +47,17 @@ public class LoginActivity extends AppCompatActivity {
     Button btnInicioSesion;
     Button btnRegistro;
 
-    //Coge el usuario usado
+    //Firebase
     public static FirebaseUser user ;
     String email = "";
     String password = "";
+    FirebaseFirestore mFirestore;
 
-
-    //Variables de google
+    //Google SignIn
     public SignInButton signInButton;
     public GoogleSignInClient signInClient;
-    public static final int SIGN_IN = 0;
 
-    //Conecte a la base de datos
-    FirebaseFirestore mFirestore;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,13 +113,17 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-
+    /**
+     Muestra un mensaje Toast en la actividad.
+     @param msg Mensaje a mostrar
+     */
     public void myToast(String msg){
         Toast.makeText(this,msg,Toast.LENGTH_LONG).show();
     }
 
-    //parte nueva
-    public void validate() {
+    /**
+     * Valida el formulario de inicio de sesión.
+     */    public void validate() {
         email = txtEmailUser.getText().toString().trim();
         password = txtPasswordUser.getText().toString().trim();
 
@@ -143,7 +147,11 @@ public class LoginActivity extends AppCompatActivity {
 
         iniciarSesion(email,password);
     }
-
+    /**
+     Inicia sesión con el correo electrónico y la contraseña proporcionados.
+     @param email Dirección de correo electrónico
+     @param password Contraseña
+     */
     public void iniciarSesion(String email, String password){
         auth.signInWithEmailAndPassword(email,password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -159,7 +167,9 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 });
     }
-
+    /**
+     Maneja la respuesta del inicio de sesión de Google.
+     */
     private ActivityResultLauncher<Intent> resultGoogleLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             result -> {
@@ -190,7 +200,9 @@ public class LoginActivity extends AppCompatActivity {
             }
     );
 
-
+    /**
+     Inicia el flujo de inicio de sesión de Google.
+     */
     public void signInGoogle(){
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.web_usuario_id))

@@ -16,7 +16,9 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.regex.Pattern;
-
+/**
+ Actividad que permite al usuario recuperar su contraseña a través del correo electrónico.
+ */
 public class ForgotPasswordActivity extends AppCompatActivity {
 
     MaterialButton btnRecuperar;
@@ -38,10 +40,17 @@ public class ForgotPasswordActivity extends AppCompatActivity {
         });
 
     }
+    /**
+     Muestra un mensaje Toast en la actividad.
+     @param msg Mensaje a mostrar
+     */
     public void myToast(String msg){
         Toast.makeText(this,msg,Toast.LENGTH_LONG).show();
     }
 
+    /**
+     Valida la dirección de correo electrónico ingresada por el usuario.
+     */
     public void validateEmail() {
         String email = txtEmailUser.getText().toString().trim();
 
@@ -54,8 +63,9 @@ public class ForgotPasswordActivity extends AppCompatActivity {
         }
         sendEmail(email);
     }
-    //Para volver hacia atrás
-    @Override
+    /**
+     Método para gestionar la acción de retroceder cuando se presiona el botón de retroceso del dispositivo.
+     */    @Override
     public void onBackPressed() {
         super.onBackPressed();
 
@@ -63,7 +73,10 @@ public class ForgotPasswordActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
-
+    /**
+     Envía un correo electrónico para restablecer la contraseña del usuario.
+     @param email Dirección de correo electrónico del usuario
+     */
     public void sendEmail(String email){
         FirebaseAuth auth = FirebaseAuth.getInstance();
         String emailAdress = email;

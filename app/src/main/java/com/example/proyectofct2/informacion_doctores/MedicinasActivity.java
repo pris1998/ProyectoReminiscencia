@@ -13,10 +13,11 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
 import java.util.ArrayList;
-
+/**
+ Activity para mostrar y gestionar la lista de medicinas.
+ */
 public class MedicinasActivity extends AppCompatActivity {
     MedicinaController medicinaController;
-    ArrayList<Medicacion> medicacionlista ;
 
     RecyclerView recyclerView;
     RecyclerMedicacion recyclerMedicacion;
@@ -28,8 +29,6 @@ public class MedicinasActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_medicinas);
 
-        //medicacionlista.add(new Medicacion("001M","Ibuprofeno","mg","Cada 6 horas","Vía Oral","Antes de comer","Ingerir con agua"));
-        //medicacionlista.add(new Medicacion("002M","Valium","mg","1 o dos veces al día","Vía Oral","Antes de comer","Ingerir con agua"));
 
         medicinaController = new MedicinaController();
 
