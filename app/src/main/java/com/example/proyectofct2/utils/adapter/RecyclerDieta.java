@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,11 +15,11 @@ import com.example.proyectofct2.informacion_doctores.Dieta;
 import com.example.proyectofct2.informacion_doctores.EditActivity;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.firestore.DocumentSnapshot;
 
 public class RecyclerDieta extends FirestoreRecyclerAdapter<Dieta,RecyclerDieta.ViewHolder> {
     Activity activity;
-
     /**
      * Create a new RecyclerView adapter that listens to a Firestore Query.  See {@link
      * FirestoreRecyclerOptions} for configuration options.
@@ -28,7 +27,6 @@ public class RecyclerDieta extends FirestoreRecyclerAdapter<Dieta,RecyclerDieta.
      * @param options
      */
     public RecyclerDieta(@NonNull FirestoreRecyclerOptions<Dieta> options, Activity activity) {
-
         super(options);
         this.activity = activity;
     }
@@ -36,22 +34,25 @@ public class RecyclerDieta extends FirestoreRecyclerAdapter<Dieta,RecyclerDieta.
     @Override
     protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull Dieta dieta) {
 
+        //Boton editar
         DocumentSnapshot documentReference = getSnapshots().getSnapshot(holder.getBindingAdapterPosition());
-        String idDieta = documentReference.getId();
+        String idDieta = documentReference.getId();//Boton editar
 
         holder.tipo.setText(dieta.getTipo());
         //holder.alimentos.setText((CharSequence) dieta.getAlimento());
         holder.peso.setText(dieta.getPeso());
         holder.estatura.setText(dieta.getEstatura());
-
+        //Boton editar
         holder.btnEditar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(activity, EditActivity.class);
-                intent.putExtra("dietaId",idDieta);
+                intent.putExtra("IdDieta",idDieta);
                 activity.startActivity(intent);
+
             }
         });
+
     }
 
     @NonNull
@@ -67,7 +68,8 @@ public class RecyclerDieta extends FirestoreRecyclerAdapter<Dieta,RecyclerDieta.
         TextView alimentos;
         TextView peso;
         TextView estatura;
-        Button btnEditar;
+        //Boton editar
+        FloatingActionButton btnEditar;
 
 
         public ViewHolder(@NonNull View itemView) {
@@ -77,6 +79,7 @@ public class RecyclerDieta extends FirestoreRecyclerAdapter<Dieta,RecyclerDieta.
             //alimentos = itemView.findViewById(R.id.txtAlimentosDieta);
             peso = itemView.findViewById(R.id.txtPesoDieta);
             estatura = itemView.findViewById(R.id.txtEstaturaDieta);
+            //Boton editar
             btnEditar = itemView.findViewById(R.id.btnEditar);
         }
     }

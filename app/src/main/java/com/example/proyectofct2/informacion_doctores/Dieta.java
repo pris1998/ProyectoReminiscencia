@@ -8,11 +8,21 @@ public class Dieta {
     private ArrayList<Alimentos> alimento;
     private String estatura;
     private String peso;
-
+    /**
+     * Constructor por defecto de la clase Dieta.
+     */
     public Dieta(){
 
     }
-
+    /**
+     * Constructor de la clase Dieta.
+     *
+     * @param id       el ID de la dieta
+     * @param tipo     el tipo de la dieta
+     * @param alimento la lista de alimentos de la dieta
+     * @param estatura la estatura asociada a la dieta
+     * @param peso     el peso asociado a la dieta
+     */
     public Dieta(String id, String tipo, ArrayList<Alimentos> alimento, String estatura, String peso) {
         this.idDieta = id;
         this.tipo = tipo;
@@ -25,11 +35,19 @@ public class Dieta {
         return idDieta;
     }
 
-
+    /**
+     * Obtiene el tipo de la dieta.
+     *
+     * @return el tipo de la dieta
+     */
     public String getTipo() {
         return tipo;
     }
-
+    /**
+     * Establece el tipo de la dieta.
+     *
+     * @param tipo el tipo de la dieta
+     */
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }

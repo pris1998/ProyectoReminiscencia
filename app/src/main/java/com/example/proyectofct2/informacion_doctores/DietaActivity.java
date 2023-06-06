@@ -1,7 +1,9 @@
 package com.example.proyectofct2.informacion_doctores;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,6 +15,8 @@ import com.example.proyectofct2.R;
 import com.example.proyectofct2.controlador.FirestoreControllerCallback;
 import com.example.proyectofct2.utils.adapter.RecyclerDieta;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
@@ -21,10 +25,10 @@ import java.util.ArrayList;
 public class DietaActivity extends AppCompatActivity {
     DietaController dietaController;
     Dieta dieta;
-
     RecyclerView recyclerView;
     RecyclerDieta adapterDieta;
     FirebaseFirestore firebaseFirestore;
+
 
 
 
@@ -49,10 +53,20 @@ public class DietaActivity extends AppCompatActivity {
         dietaController = new DietaController();
         //le paso la nueva dieta
         dietaController.addDieta(dieta, new FirestoreControllerCallback() {
+            /**
+             * Método llamado cuando se completa la consulta a la base de datos.
+             *
+             * @param success indica si la consulta se completó con éxito
+             */
             @Override
             public void onQueryComplete(boolean success) {
-                Log.d("Mensaje","Ha entrado en la bd");            }
 
+                Log.d("Mensaje","Ha entrado en la bd");            }
+            /**
+             * Método llamado cuando ocurre un fallo en la consulta a la base de datos.
+             *
+             * @param exception la excepción generada durante la consulta
+             */
             @Override
             public void onQueryFailure(Exception exception) {
                 Log.d("Advertencia","Error al cargar");
@@ -61,12 +75,21 @@ public class DietaActivity extends AppCompatActivity {
         });
 
         dietaController.getDieta("1", new DietaController.DietaCallback() {
+            /**
+             * Método llamado cuando se completa la consulta de la dieta.
+             *
+             * @param result la dieta obtenida
+             */
             @Override
             public void onQueryComplete(Dieta result) {
 
                 Log.d("Mensaje","Ha entrado en la bd");
             }
-
+            /**
+             * Método llamado cuando ocurre un fallo en la consulta de la dieta.
+             *
+             * @param exception la excepción generada durante la consulta
+             */
             @Override
             public void onQueryFailure(Exception exception) {
                 Log.d("Advertencia","Error al cargar");
@@ -75,14 +98,21 @@ public class DietaActivity extends AppCompatActivity {
         });
 
 
-    }
 
+
+
+    }
+    /**
+     * Método llamado cuando la actividad entra en primer plano.
+     */
     @Override
     protected void onStart() {
         super.onStart();
         adapterDieta.startListening();
     }
-
+    /**
+     * Método llamado cuando la actividad sale de primer plano.
+     */
     @Override
     protected void onStop() {
         super.onStop();
