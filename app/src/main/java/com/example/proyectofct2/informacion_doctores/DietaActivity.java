@@ -38,7 +38,7 @@ public class DietaActivity extends AppCompatActivity {
 
         FirestoreRecyclerOptions<Dieta> firestoreRecyclerOptions = new FirestoreRecyclerOptions.Builder<Dieta>().setQuery(query,Dieta.class).build();
 
-        adapterDieta = new RecyclerDieta(firestoreRecyclerOptions,this);
+        adapterDieta = new RecyclerDieta(firestoreRecyclerOptions);
         adapterDieta.notifyDataSetChanged();
         recyclerView.setAdapter(adapterDieta);
 
