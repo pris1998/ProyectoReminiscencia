@@ -42,6 +42,7 @@ public class RecyclerDieta extends FirestoreRecyclerAdapter<Dieta,RecyclerDieta.
         //holder.alimentos.setText((CharSequence) dieta.getAlimento());
         holder.peso.setText(dieta.getPeso());
         holder.estatura.setText(dieta.getEstatura());
+
         //Boton editar
         holder.btnEditar.setOnClickListener(new View.OnClickListener() {
             @Override

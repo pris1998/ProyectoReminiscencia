@@ -45,28 +45,8 @@ public class DietaActivity extends AppCompatActivity {
 
         dieta = new Dieta("1","tipo", new ArrayList<>(), "estatura", "peso");
         dietaController = new DietaController();
-        //le paso la nueva dieta
-        dietaController.addDieta(dieta, new FirestoreControllerCallback() {
-            /**
-             * Método llamado cuando se completa la consulta a la base de datos.
-             *
-             * @param success indica si la consulta se completó con éxito
-             */
-            @Override
-            public void onQueryComplete(boolean success) {
-
-                Log.d("Mensaje","Ha entrado en la bd");            }
-            /**
-             * Método llamado cuando ocurre un fallo en la consulta a la base de datos.
-             *
-             * @param exception la excepción generada durante la consulta
-             */
-            @Override
-            public void onQueryFailure(Exception exception) {
-                Log.d("Advertencia","Error al cargar");
-                Toast.makeText(DietaActivity.this, "Error al cargar", Toast.LENGTH_SHORT).show();
-            }
-        });
+        //Le paso la nueva dieta
+        dietaController.addDieta(dieta);
 
         dietaController.getDieta("1", new DietaController.DietaCallback() {
             /**

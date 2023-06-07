@@ -46,9 +46,9 @@ public class DietaController {
 
      Agrega una dieta a la base de datos.
      @param dieta la dieta a agregar
-     @param calback el callback para manejar el resultado de la operación
+
      */
-    public void addDieta(Dieta dieta, FirestoreControllerCallback calback){
+    public void addDieta(Dieta dieta){
         dietas.add(dieta).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
             @Override
             public void onSuccess(DocumentReference documentReference) {
