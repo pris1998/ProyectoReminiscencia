@@ -36,7 +36,6 @@ public class PerfilAdapter extends FirestoreRecyclerAdapter<Paciente, PerfilAdap
         holder.direccion.setText(paciente.getDireccion());
         holder.telContacto.setText(paciente.getTelContacto());
 
-
     }
 
     @NonNull

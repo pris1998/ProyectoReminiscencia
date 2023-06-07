@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.proyectofct2.R;
-import com.example.proyectofct2.informacion_doctores.Medicacion;
+import com.example.proyectofct2.utils.modelo.Medicacion;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 

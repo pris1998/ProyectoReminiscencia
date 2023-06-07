@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.proyectofct2.R;
-import com.example.proyectofct2.informacion_doctores.Dieta;
+import com.example.proyectofct2.utils.modelo.Dieta;
 import com.example.proyectofct2.informacion_doctores.EditActivity;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
@@ -34,16 +34,15 @@ public class RecyclerDieta extends FirestoreRecyclerAdapter<Dieta,RecyclerDieta.
     @Override
     protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull Dieta dieta) {
 
-        //Boton editar
+
         DocumentSnapshot documentReference = getSnapshots().getSnapshot(holder.getBindingAdapterPosition());
-        String idDieta = documentReference.getId();//Boton editar
+        String idDieta = documentReference.getId();
 
         holder.tipo.setText(dieta.getTipo());
         //holder.alimentos.setText((CharSequence) dieta.getAlimento());
         holder.peso.setText(dieta.getPeso());
         holder.estatura.setText(dieta.getEstatura());
 
-        //Boton editar
         holder.btnEditar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,7 +68,7 @@ public class RecyclerDieta extends FirestoreRecyclerAdapter<Dieta,RecyclerDieta.
         TextView alimentos;
         TextView peso;
         TextView estatura;
-        //Boton editar
+
         FloatingActionButton btnEditar;
 
 
@@ -77,10 +76,8 @@ public class RecyclerDieta extends FirestoreRecyclerAdapter<Dieta,RecyclerDieta.
             super(itemView);
 
             tipo = itemView.findViewById(R.id.txtTipoDieta);
-            //alimentos = itemView.findViewById(R.id.txtAlimentosDieta);
             peso = itemView.findViewById(R.id.txtPesoDieta);
             estatura = itemView.findViewById(R.id.txtEstaturaDieta);
-            //Boton editar
             btnEditar = itemView.findViewById(R.id.btnEditar);
         }
     }

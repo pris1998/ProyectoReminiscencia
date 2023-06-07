@@ -2,7 +2,6 @@ package com.example.proyectofct2.informacion_doctores;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -10,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.proyectofct2.R;
 import com.example.proyectofct2.utils.adapter.RecyclerDieta;
+import com.example.proyectofct2.utils.modelo.Dieta;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
@@ -70,10 +70,6 @@ public class DietaActivity extends AppCompatActivity {
 
             }
         });
-
-
-
-
 
     }
     /**

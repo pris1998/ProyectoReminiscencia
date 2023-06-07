@@ -8,11 +8,11 @@ import android.os.Bundle;
 
 import com.example.proyectofct2.R;
 import com.example.proyectofct2.utils.adapter.RecyclerMedicacion;
+import com.example.proyectofct2.utils.modelo.Medicacion;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
-import java.util.ArrayList;
 /**
  Activity para mostrar y gestionar la lista de medicinas.
  */

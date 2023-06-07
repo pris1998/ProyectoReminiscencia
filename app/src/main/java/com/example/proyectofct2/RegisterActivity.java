@@ -44,13 +44,10 @@ public class RegisterActivity extends AppCompatActivity {
     String email ;
     String password;
     String confirmPassword;
-    String nombre_Usuario;
 
     private FirebaseAuth Fauth = FirebaseAuth.getInstance();
 
-
     private FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
-
 
 
     @Override
@@ -71,7 +68,6 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //vuelve al pulsar el texto al inicio
                 Intent intent = new Intent(RegisterActivity.this,LoginActivity.class );
-                intent.putExtra("Login","mensaje");
                 startActivity(intent);
             }
         });
@@ -90,54 +86,6 @@ public class RegisterActivity extends AppCompatActivity {
      */
     public void myToast(String mensaje){
         Toast.makeText(this,mensaje,Toast.LENGTH_LONG).show();
-    }
-
-    /**
-     * Método para crear usuarios y evitar repetir código.
-     *
-     * @param email    Dirección de correo electrónico
-     * @param password Contraseña
-     */
-    private void createUsers(String email , String password){
-        //Si no estan vacios los rellena y los crea
-        auth.createUserWithEmailAndPassword( email,  password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-            @Override
-            public void onSuccess(AuthResult authResult) {
-                //Manda un email al correo de registrado para comprobar que está bien hecho
-                user.sendEmailVerification();
-                //alerta para decirle al usuario que se ha mandado un menseje
-                // para verificar que el registro ha sido existoso
-                alertDialog("Aviso usuario creado ",
-                        "Se ha enviado un enlace a su " +
-                                " email para su verificacion.Compruebe su usuario");
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                myToast("Error al registrarse");
-
-            }
-        });
-    }
-
-    /**
-     * Muestra un cuadro de diálogo de alerta.
-     *
-     * @param title   Título del cuadro de diálogo
-     * @param mensaje Mensaje del cuadro de diálogo
-     * @return Cuadro de diálogo creado
-     */
-    public AlertDialog alertDialog(String title, String mensaje){
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle(title);
-        builder.setMessage(mensaje);
-        builder.setPositiveButton("Aceptar", null);
-        builder.setNegativeButton("Cancelar",null);
-        AlertDialog dialog = builder.create();
-        dialog.show();
-
-        return dialog;
-
     }
 
 
@@ -160,8 +108,6 @@ public class RegisterActivity extends AppCompatActivity {
         if (password.isEmpty() || password.length() < 8) {
             txtEPassword.setError("Se necesitan 8 caracteres");
             return;
-            //tiene q contener unnúmero la contraseña pero no me funciona asi q nada
-            //si no es la contraseña se manda como nulo
         } else if (!Pattern.compile("[0-9]").matcher(password).find()) {
             txtEPassword.setError("Introduzca algún número");
             return;
@@ -210,7 +156,12 @@ public class RegisterActivity extends AppCompatActivity {
         Map<String,Object> mapDatos = new HashMap<>();
         mapDatos.put("email",email);
         mapDatos.put("password",password);
-        /*firebaseFirestore.collection("doctores").add(mapDatos).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+        firebaseFirestore.collection("users").document(
+
+
+                        "HMpzzDqpNiDMLS60kkdY").
+                collection("doctores").add(mapDatos)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
             @Override
             public void onSuccess(DocumentReference documentReference) {
                 //Salga bien
@@ -223,27 +174,8 @@ public class RegisterActivity extends AppCompatActivity {
             public void onFailure(@NonNull Exception e) {
                 myToast("Error al registrar usuario");
             }
-        });*/
-
-
-        /**
-         * ******COMPROBAR ESTO QUE LLEGA UN NUEVO USUARIO *****
-         */
-
-        firebaseFirestore.collection("users").add(mapDatos).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-            @Override
-            public void onSuccess(DocumentReference documentReference) {
-                //Salga bien
-                myToast("Usuario creado en BD");
-                // Finaliza la actividad
-                finish();
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                myToast("Error al registrar usuario");
-            }
         });
+
 
     }
 

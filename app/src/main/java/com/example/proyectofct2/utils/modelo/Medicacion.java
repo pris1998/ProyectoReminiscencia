@@ -1,4 +1,4 @@
-package com.example.proyectofct2.informacion_doctores;
+package com.example.proyectofct2.utils.modelo;
 
 public class Medicacion {
     private String id_medicina;
