@@ -34,10 +34,9 @@ import java.util.regex.Pattern;
  * Actividad para el registro de usuarios.
  */
 public class RegisterActivity extends AppCompatActivity {
-    ImageView imageViewRegister;
-    TextView txtVEmailR, txtnewUser;
+    TextView txtnewUser;
 
-    TextInputEditText txtEEmail, txtEPassword, confirmarPassword, txtName;
+    TextInputEditText txtEEmail, txtEPassword, confirmarPassword;
 
     Button btnInicioS;
 
@@ -134,7 +133,7 @@ public class RegisterActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Intent intent = new Intent(RegisterActivity.this, ListaPacientesActivity.class);
+                            Intent intent = new Intent(RegisterActivity.this,ListaPacientesActivity.class);
                             startActivity(intent);
                             finish();
                         }else{
@@ -150,34 +149,43 @@ public class RegisterActivity extends AppCompatActivity {
      *
      * @param email    Dirección de correo electrónico
      * @param password Contraseña
-     */    public void registroBD(String email,String password){
+     */  public void registroBD( String email,String password){
         //Uso un HashMap porque es más facil ya que tiene un clave por (String)
         // y un valor (Object) son los objetos que se guardan al ecribirlo mediante la pantalla de Registro
         Map<String,Object> mapDatos = new HashMap<>();
         mapDatos.put("email",email);
         mapDatos.put("password",password);
         firebaseFirestore.collection("users").document(
-
-
                         "HMpzzDqpNiDMLS60kkdY").
-                collection("doctores").add(mapDatos)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-            @Override
-            public void onSuccess(DocumentReference documentReference) {
-                //Salga bien
-                myToast("Usuario creado en BD");
-                //finaliza la activity
-                finish();
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
+                collection("doctores").add(mapDatos). addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        // Éxito en la creación del usuario en la base de datos
+                        myToast("Usuario creado en BD");
+                        // Finaliza la actividad
+                        finish();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                 @Override
+                public void onFailure(@NonNull Exception e) {
                 myToast("Error al registrar usuario");
-            }
+                 }
         });
-
-
     }
+
+
+    /**
+     * Método que se llama cuando se presiona el botón de retroceso.
+     * Regresa a la actividad de inicio de sesión.
+     */
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
 
 
 }
