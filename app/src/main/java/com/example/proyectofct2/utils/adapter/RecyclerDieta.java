@@ -1,7 +1,5 @@
 package com.example.proyectofct2.utils.adapter;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +20,6 @@ public class RecyclerDieta extends FirestoreRecyclerAdapter<Dieta,RecyclerDieta.
     /**
      * Create a new RecyclerView adapter that listens to a Firestore Query.  See {@link
      * FirestoreRecyclerOptions} for configuration options.
-     *
      * @param options
      */
     public RecyclerDieta(@NonNull FirestoreRecyclerOptions<Dieta> options) {
