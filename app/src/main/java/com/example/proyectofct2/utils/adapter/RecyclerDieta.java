@@ -28,11 +28,6 @@ public class RecyclerDieta extends FirestoreRecyclerAdapter<Dieta,RecyclerDieta.
 
     @Override
     protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull Dieta dieta) {
-
-
-        DocumentSnapshot documentReference = getSnapshots().getSnapshot(holder.getBindingAdapterPosition());
-        String idDieta = documentReference.getId();
-
         holder.tipo.setText(dieta.getTipo());
         //holder.alimentos.setText((CharSequence) dieta.getAlimento());
         holder.peso.setText(dieta.getPeso());
